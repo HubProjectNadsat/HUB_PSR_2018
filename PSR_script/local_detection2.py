@@ -14,7 +14,7 @@ def count_white_pixels(img):
     for row in range(img.shape[0]):
         for column in range(img.shape[1]):
             if img[row, column] == 255:
-                nb_white_pixel += 1
+                nb_white_pixel += 1 
     print nb_white_pixel
     return nb_white_pixel
 
