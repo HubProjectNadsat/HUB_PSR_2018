@@ -17,7 +17,7 @@ def count_white_pixels(img):
                 nb_white_pixel += 1 
     print nb_white_pixel
     return nb_white_pixel
-
+    
 
 def local_ouvert():
     """"Print le status de l'ouverture de local d'epitanime"""
@@ -25,14 +25,16 @@ def local_ouvert():
                                "/snapshot.cgi?user=admin&amp;pwd=adm42tanime",
                                "localnow.jpg")
     img = cv.imread('localnow.jpg', cv.IMREAD_GRAYSCALE)
-    ret, new_img = cv.threshold(img, 127, 255, cv.THRESH_BINARY)
+    ret, new_img = cv.threshold(img, 96, 255, cv.THRESH_BINARY)
 
     cv.imshow('local_image', new_img)
     nb_pixel = new_img.shape[0] * new_img.shape[1]
     nb_white_pixel = count_white_pixels(new_img)
+    total = float(nb_white_pixel) / float(nb_pixel)
     cv.waitKey(0)
     cv.destroyAllWindows()
-    return ((nb_white_pixel / nb_pixel) > 0.16)
+    return (total > 0.16)
+
 
 if __name__ == "__main__":
     if local_ouvert():
