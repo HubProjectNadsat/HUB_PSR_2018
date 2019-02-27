@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpiLocal", "EpiLocal\EpiLocal.csproj", "{10F8187E-1416-4061-860F-32BA86C1735B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10F8187E-1416-4061-860F-32BA86C1735B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F8187E-1416-4061-860F-32BA86C1735B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F8187E-1416-4061-860F-32BA86C1735B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F8187E-1416-4061-860F-32BA86C1735B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D0CF4A2-A790-40BF-BB7C-67A65007957E}
+	EndGlobalSection
+EndGlobal
