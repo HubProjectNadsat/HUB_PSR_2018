@@ -13,11 +13,11 @@ namespace EpiLocal
         [Command("local")]
         async Task local(params string[] args)
         {
-            string PyProg = "D:\\HUB\\test.py";
+            string PyProg = "C:\\Users\\Benoit\\Desktop\\HUB_PSR_2018\\PSR_script\\local_detection2.py";
             int dice = rnd.Next();
 
             Process proc = new Process();
-            proc.StartInfo.FileName = "C:\\Python\\python.exe";
+            proc.StartInfo.FileName = "C:\\Python27\\python.exe";
             proc.StartInfo.RedirectStandardOutput = true;
             proc.StartInfo.UseShellExecute = false;
 
@@ -25,13 +25,15 @@ namespace EpiLocal
             proc.Start();
 
             StreamReader sReader = proc.StandardOutput;
-            string output = sReader.ReadToEnd();
+            string output = sReader.ReadToEnd().Trim('\n', '\r');
             Console.Write(output);
 
-            if (output.Equals("0"))
+            if (output == "Le local est ouvert!")
                 await ReplyAsync("le local est ouvert");
-            else if (output.Equals("1"))
+            else if (output == "Le local est ferme!")
                 await ReplyAsync("le local est fermé");
+            else if (output == "Les cameras sont inaccessible")
+                await ReplyAsync("Les cameras sont inaccessible pour cause de problème technique");
             else
                 await ReplyAsync("dunno");
         }

@@ -4,6 +4,7 @@
 IP_CAM = "localhost:9876"
 
 import numpy as np
+import sys
 import cv2 as cv
 import urllib
 from PIL import Image
@@ -15,15 +16,19 @@ def count_white_pixels(img):
         for column in range(img.shape[1]):
             if img[row, column] == 255:
                 nb_white_pixel += 1 
-    print nb_white_pixel
+    # print nb_white_pixel
     return nb_white_pixel
     
 
 def local_ouvert():
     """"Print le status de l'ouverture de local d'epitanime"""
-    urllib.urlretrieve("http://" + IP_CAM +
-                               "/snapshot.cgi?user=admin&amp;pwd=adm42tanime",
-                               "localnow.jpg")
+    try:
+        urllib.urlretrieve("http://" + IP_CAM +
+                                   "/snapshot.cgi?user=admin&amp;pwd=adm42tanime",
+                                   "localnow.jpg")
+    except IOError: 
+        print "Les cameras sont inaccessible"
+        sys.exit(-1)
     img = cv.imread('localnow.jpg', cv.IMREAD_GRAYSCALE)
     ret, new_img = cv.threshold(img, 96, 255, cv.THRESH_BINARY)
 
@@ -40,4 +45,4 @@ if __name__ == "__main__":
     if local_ouvert():
         print "Le local est ouvert!"
     else:
-        print "Le local est fermé!"
+        print "Le local est ferme!"

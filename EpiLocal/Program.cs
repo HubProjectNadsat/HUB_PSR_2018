@@ -12,10 +12,9 @@ namespace EpiLocal
         DiscordSocketClient Client;
         CommandService Command;
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            await new Program().MainAsync();
-
+            new Program().MainAsync().Wait();
         }
 
         async Task MainAsync()
