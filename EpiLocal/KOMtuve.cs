@@ -8,13 +8,16 @@ namespace EpiLocal
 {
     class KOMtuve : ModuleBase
     {
-        Random rnd = new Random();
+        [Command("Help"), Alias("--help", "/help", "-h", "/h")]
+        public async Task PrintHelp(params string[] args)
+        {
+            await ReplyAsync("Appel moi avec /l or l or local pour savoir si le local est ouvert" + Environment.NewLine + "`Ex: @Epilocal /l`");
+        }
 
-        [Command("local")]
+        [Command("local"), Alias("/l", "l")]
         async Task local(params string[] args)
         {
             string PyProg = "C:\\Users\\Benoit\\Desktop\\HUB_PSR_2018\\PSR_script\\local_detection2.py";
-            int dice = rnd.Next();
 
             Process proc = new Process();
             proc.StartInfo.FileName = "C:\\Python27\\python.exe";
@@ -37,5 +40,11 @@ namespace EpiLocal
             else
                 await ReplyAsync("dunno");
         }
+
+//        [Command("", RunMode = RunMode.Async), Priority(-1)]
+//        public async Task DefaultMsg(params string[] args)
+//        {
+//            await PrintHelp(args);
+//        }
     }
 }
