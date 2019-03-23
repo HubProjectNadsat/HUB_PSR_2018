@@ -16,7 +16,6 @@ def count_white_pixels(img):
         for column in range(img.shape[1]):
             if img[row, column] == 255:
                 nb_white_pixel += 1 
-    # print nb_white_pixel
     return nb_white_pixel
     
 
@@ -32,12 +31,9 @@ def local_ouvert():
     img = cv.imread('localnow.jpg', cv.IMREAD_GRAYSCALE)
     ret, new_img = cv.threshold(img, 96, 255, cv.THRESH_BINARY)
 
-    # cv.imshow('local_image', new_img)
     nb_pixel = new_img.shape[0] * new_img.shape[1]
     nb_white_pixel = count_white_pixels(new_img)
     total = float(nb_white_pixel) / float(nb_pixel)
-    # cv.waitKey(0)
-    # cv.destroyAllWindows()
     return (total > 0.16)
 
 
